@@ -1,1 +1,3 @@
-# contas.api
+# Contas API [![Build, Test & Publish Package](https://github.com/lucassvasconcelos/contas.api/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/lucassvasconcelos/contas.api/actions/workflows/main.yml) [![License](https://img.shields.io/github/license/lucassvasconcelos/contas.api.svg)](LICENSE) [![Issues open](https://img.shields.io/github/issues/lucassvasconcelos/contas.api.svg)](https://huboard.com/lucassvasconcelos/contas.api/) [![codecov](https://codecov.io/gh/lucassvasconcelos/contas.api/branch/main/graph/badge.svg?token=ES7DF1ECJM)](https://codecov.io/gh/lucassvasconcelos/contas.api)
+
+Pacote que contém as definições de um shared kernel.
