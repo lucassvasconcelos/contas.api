@@ -1,9 +1,9 @@
 using System;
-using CoreBox;
+using CoreBox.Domain;
 
 namespace Contas.Domain
 {
-    public partial class Conta : Entity<Conta, Guid>
+    public partial class Conta : Entity<Conta>
     {
         public string Nome { get; private set; }
         public DateTime Data { get; private set; }

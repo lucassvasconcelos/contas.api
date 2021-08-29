@@ -1,9 +1,9 @@
 using System;
-using CoreBox;
+using CoreBox.Domain;
 
 namespace Contas.Domain
 {
-    public partial class Categoria : Entity<Categoria, Guid>
+    public partial class Categoria : Entity<Categoria>
     {
         public static Categoria Criar(
             string nome,
@@ -12,9 +12,6 @@ namespace Contas.Domain
         )
         => new Categoria()
         {
-            Id = Guid.NewGuid(),
-            DataCriacao = DateTime.Now,
-            DataUltimaAtualizacao = DateTime.Now,
             Nome = nome,
             Descricao = descricao,
             Usuario = usuario,
