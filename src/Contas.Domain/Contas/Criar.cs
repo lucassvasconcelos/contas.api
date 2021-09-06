@@ -1,11 +1,11 @@
 using System;
 using Contas.Domain.Contas.Validators;
-using CoreBox;
+using CoreBox.Domain;
 using CoreBox.Extensions;
 
 namespace Contas.Domain
 {
-    public partial class Conta : Entity<Conta, Guid>
+    public partial class Conta : Entity<Conta>
     {
         public static Conta Criar(
             string nome,
@@ -20,17 +20,15 @@ namespace Contas.Domain
         {
             var conta = new Conta()
             {
-                Id = Guid.NewGuid(),
-                DataCriacao = DateTime.Now,
-                DataUltimaAtualizacao = DateTime.Now,
                 Nome = nome,
                 Data = data,
                 Valor = valor,
                 Parcelado = parcelado,
                 NumeroParcelas = numeroParcelas,
                 Observacao = observacao,
-                Categoria = categoria,
-                Usuario = usuario
+                Usuario = usuario,
+                IdCategoria = categoria.Id,
+                Categoria = categoria
             };
 
             conta.ValidateAndThrow(new CriarValidator());
