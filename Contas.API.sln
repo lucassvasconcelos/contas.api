@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contas.UnitTests", "tests\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contas.IntegrationTests", "tests\Contas.IntegrationTests\Contas.IntegrationTests.csproj", "{F355A115-D6B5-404F-96F7-FE15FD188DAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contas.Infra.Repositories.Abstractions", "src\Contas.Infra.Repositories.Abstractions\Contas.Infra.Repositories.Abstractions.csproj", "{8E717B48-164C-4CFC-80BD-38D02FD55EB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -202,6 +204,18 @@ Global
 		{F355A115-D6B5-404F-96F7-FE15FD188DAD}.Release|x64.Build.0 = Release|Any CPU
 		{F355A115-D6B5-404F-96F7-FE15FD188DAD}.Release|x86.ActiveCfg = Release|Any CPU
 		{F355A115-D6B5-404F-96F7-FE15FD188DAD}.Release|x86.Build.0 = Release|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Debug|x64.Build.0 = Debug|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Debug|x86.Build.0 = Debug|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Release|x64.ActiveCfg = Release|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Release|x64.Build.0 = Release|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Release|x86.ActiveCfg = Release|Any CPU
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CB0C7763-D91A-4CC3-A4EE-339F3B7E93B8} = {06DD99FF-BA59-48A2-AA58-E9E226E82BEB}
@@ -217,5 +231,6 @@ Global
 		{90A4E1FC-38E6-480D-9282-0C40F02A1A1D} = {06DD99FF-BA59-48A2-AA58-E9E226E82BEB}
 		{D0B4262A-7B93-4F34-A457-054688AA30A6} = {43585DA7-86B9-442B-8CC1-2EA6BC91D658}
 		{F355A115-D6B5-404F-96F7-FE15FD188DAD} = {43585DA7-86B9-442B-8CC1-2EA6BC91D658}
+		{8E717B48-164C-4CFC-80BD-38D02FD55EB1} = {06DD99FF-BA59-48A2-AA58-E9E226E82BEB}
 	EndGlobalSection
 EndGlobal

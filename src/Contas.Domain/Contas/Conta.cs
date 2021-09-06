@@ -1,9 +1,9 @@
 using System;
-using CoreBox;
+using CoreBox.Domain;
 
 namespace Contas.Domain
 {
-    public partial class Conta : Entity<Conta, Guid>
+    public partial class Conta : Entity<Conta>
     {
         public string Nome { get; private set; }
         public DateTime Data { get; private set; }
@@ -12,8 +12,8 @@ namespace Contas.Domain
         public int NumeroParcelas { get; private set; }
         public string Observacao { get; private set; }
         public Guid Usuario { get; private set; }
-        public Categoria Categoria { get; private set; }
-
-        private Conta() { }
+        
+        public Guid IdCategoria { get; private set; }
+        public virtual Categoria Categoria { get; private set; }
     }
 }
