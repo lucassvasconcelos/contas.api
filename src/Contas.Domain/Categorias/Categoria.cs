@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CoreBox.Domain;
 
 namespace Contas.Domain
@@ -8,7 +9,6 @@ namespace Contas.Domain
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
         public Guid Usuario { get; private set; }
-
-        private Categoria() { }
+        public virtual IEnumerable<Conta> Contas { get; set; }
     }
 }

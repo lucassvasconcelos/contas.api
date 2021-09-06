@@ -9,6 +9,8 @@ namespace Contas.Infra.Repositories.Context
         public DbSet<Conta> Contas { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
 
+        public ContasContext(DbContextOptions<ContasContext> options) : base(options) { }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new ContaConfiguration());

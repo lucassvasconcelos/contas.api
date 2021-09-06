@@ -1,5 +1,7 @@
 using System;
+using Contas.Domain.Categorias.Validators;
 using CoreBox.Domain;
+using CoreBox.Extensions;
 
 namespace Contas.Domain
 {
@@ -10,11 +12,16 @@ namespace Contas.Domain
             string descricao,
             Guid usuario
         )
-        => new Categoria()
         {
-            Nome = nome,
-            Descricao = descricao,
-            Usuario = usuario,
-        };
+            var categoria = new Categoria()
+            {
+                Nome = nome,
+                Descricao = descricao,
+                Usuario = usuario,
+            };
+
+            categoria.ValidateAndThrow(new CriarValidator());
+            return categoria;
+        }
     }
 }

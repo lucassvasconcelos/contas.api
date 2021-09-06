@@ -26,8 +26,9 @@ namespace Contas.Domain
                 Parcelado = parcelado,
                 NumeroParcelas = numeroParcelas,
                 Observacao = observacao,
-                Categoria = categoria,
-                Usuario = usuario
+                Usuario = usuario,
+                IdCategoria = categoria.Id,
+                Categoria = categoria
             };
 
             conta.ValidateAndThrow(new CriarValidator());

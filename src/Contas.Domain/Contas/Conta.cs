@@ -12,8 +12,8 @@ namespace Contas.Domain
         public int NumeroParcelas { get; private set; }
         public string Observacao { get; private set; }
         public Guid Usuario { get; private set; }
-        public Categoria Categoria { get; private set; }
-
-        private Conta() { }
+        
+        public Guid IdCategoria { get; private set; }
+        public virtual Categoria Categoria { get; private set; }
     }
 }

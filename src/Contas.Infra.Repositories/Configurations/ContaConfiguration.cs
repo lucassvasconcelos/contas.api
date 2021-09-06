@@ -24,6 +24,12 @@ namespace Contas.Infra.Repositories.Configurations
             contas
                 .Property(prop => prop.DataUltimaAtualizacao)
                 .IsRequired();
+
+            contas
+                .HasOne(ho => ho.Categoria)
+                .WithMany(wm => wm.Contas)
+                .HasForeignKey(fk => fk.IdCategoria)
+                .HasConstraintName("FK_CATEGORIA_CONTAS");
         }
     }
 }
