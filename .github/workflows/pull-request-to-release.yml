@@ -1,9 +1,9 @@
-name: Build, Test & Publish Package
+name: Release - Pull Request
 
 on:
-  push:
+  pull_request:
     branches:
-      - main
+      - release
 
 jobs:
   test-and-build:
@@ -11,24 +11,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-
-    - name: Fetch unshallow
-      run: git fetch --prune --tags --unshallow
+      with:
+        fetch-depth: 0
+        ref: release
 
     - name: dotnet Setup
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
-
-    - name: GitVersion Setup
-      uses: gittools/actions/gitversion/setup@v0.9.7
-      with:
-        versionSpec: '5.x'
-
-    - name: GitVersion Execute
-      uses: gittools/actions/gitversion/execute@v0.9.7
-      with:
-        useConfigFile: true
 
     - name: install cake
       run: dotnet tool restore
