@@ -23,7 +23,7 @@ Task("UnitTest").IsDependentOn("Build").Does(() => {
     {
         CollectCoverage = true,
         CoverletOutputFormat = CoverletOutputFormat.cobertura,
-        CoverletOutputDirectory = Directory("./tests/Contas.UnitTests/.coverage"),
+        CoverletOutputDirectory = Directory("./tests/.coverage"),
         CoverletOutputName = "cov",
         ThresholdType = ThresholdType.Line | ThresholdType.Branch,
         Threshold = 100
