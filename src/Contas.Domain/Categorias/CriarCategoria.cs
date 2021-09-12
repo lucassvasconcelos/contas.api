@@ -20,7 +20,7 @@ namespace Contas.Domain
                 Usuario = usuario,
             };
 
-            categoria.ValidateAndThrow(new CriarValidator());
+            categoria.ValidateAndThrow(new CriarCategoriaValidator());
             return categoria;
         }
     }

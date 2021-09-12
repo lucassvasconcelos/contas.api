@@ -9,8 +9,8 @@ namespace Contas.UnitTests.Domain.Contas
         public static void ShouldBeValid(this Conta conta)
         {
             conta.Id.Should().NotBeEmpty();
-            conta.DataCriacao.Should().BeCloseTo(DateTime.Now, precision: 2000);
-            conta.DataUltimaAtualizacao.Should().BeCloseTo(DateTime.Now, precision: 2000);
+            conta.DataCriacao.Should().BeCloseTo(DateTime.Now, precision: TimeSpan.FromMilliseconds(2000));
+            conta.DataUltimaAtualizacao.Should().BeCloseTo(DateTime.Now, precision: TimeSpan.FromMilliseconds(2000));
             conta.Nome.Should().NotBeEmpty();
             conta.Data.Should().NotBe(DateTime.MinValue);
             conta.Data.Should().NotBe(DateTime.MaxValue);
@@ -18,7 +18,7 @@ namespace Contas.UnitTests.Domain.Contas
             conta.Usuario.Should().NotBeEmpty();
             conta.IdCategoria.Should().NotBeEmpty();
             conta.Categoria.Should().NotBeNull();
-            
+
             if (conta.Parcelado)
                 conta.NumeroParcelas.Should().BeGreaterThan(0);
             else

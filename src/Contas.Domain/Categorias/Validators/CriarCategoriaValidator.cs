@@ -2,9 +2,9 @@ using FluentValidation;
 
 namespace Contas.Domain.Categorias.Validators
 {
-    public class CriarValidator : AbstractValidator<Categoria>
+    public class CriarCategoriaValidator : AbstractValidator<Categoria>
     {
-        public CriarValidator()
+        public CriarCategoriaValidator()
         {
             RuleFor(rule => rule.Id)
                 .NotEmpty()

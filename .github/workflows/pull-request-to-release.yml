@@ -26,8 +26,14 @@ jobs:
     - name: dotnet Cake
       run: dotnet cake
 
-    - name: CodeCov
+    - name: CodeCov - UnitTests
       uses: codecov/codecov-action@v2
       with:
-        files: ./tests/.coverage/cov.cobertura.xml
+        files: ./tests/Contas.UnitTests/.coverage/cov.cobertura.xml
         fail_ci_if_error: true
+
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

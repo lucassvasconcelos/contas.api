@@ -31,7 +31,8 @@ namespace Contas.Infra.Repositories
             => await transaction.RollbackAsync();
 
         public IRepository<TEntity> GetRepository<TEntity>() where TEntity : Entity<TEntity>
-            => typeof(TEntity) switch {
+            => typeof(TEntity) switch
+            {
                 Type tipo when tipo == typeof(Conta) => (IRepository<TEntity>)ContaRepository,
                 Type tipo when tipo == typeof(Categoria) => (IRepository<TEntity>)CategoriaRepository,
                 _ => null
