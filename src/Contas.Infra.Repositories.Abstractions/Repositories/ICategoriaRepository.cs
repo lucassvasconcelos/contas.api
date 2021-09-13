@@ -5,6 +5,6 @@ namespace Contas.Infra.Repositories.Abstractions.Repositories
 {
     public interface ICategoriaRepository : IRepository<Categoria>
     {
-         
+
     }
 }

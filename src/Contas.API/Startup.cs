@@ -1,5 +1,6 @@
 using Contas.Infra.Repositories;
 using Contas.Infra.Repositories.Context;
+using CoreBox.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,8 +13,8 @@ namespace Contas.API
     {
         public IConfiguration _configuration { get; }
 
-        public Startup(IConfiguration configuration)
-            => _configuration = configuration;
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+            => _configuration = configuration.GetEnvironmentConfiguration(env);
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -22,17 +23,21 @@ namespace Contas.API
         }
 
         public void Configure(
-            IApplicationBuilder app, 
-            IWebHostEnvironment env, 
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
             ContasContext contasContext
         )
         {
+            contasContext.Migrate();
+
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
-            
-            contasContext.Migrate();
-            app.UseResponseCompression();
+
+            app.UseCors();
+            app.UseGlobalExceptionHandler();
             app.UseRouting();
+            app.UseResponseCompression();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => endpoints.MapControllers());
         }

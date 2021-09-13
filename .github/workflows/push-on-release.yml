@@ -39,11 +39,8 @@ jobs:
       env:
         GIT_VERSION: ${{ steps.gitversion.outputs.semVer }}
 
-    - name: CodeCov
+    - name: CodeCov - UnitTests
       uses: codecov/codecov-action@v2
       with:
         files: ./tests/.coverage/cov.cobertura.xml
         fail_ci_if_error: true
-
-    # - name: Deploy
-    #   run: dotnet tool restore

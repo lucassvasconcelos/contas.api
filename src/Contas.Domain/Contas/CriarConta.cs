@@ -31,7 +31,7 @@ namespace Contas.Domain
                 Categoria = categoria
             };
 
-            conta.ValidateAndThrow(new CriarValidator());
+            conta.ValidateAndThrow(new CriarContaValidator());
             return conta;
         }
     }
