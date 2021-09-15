@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Contas.Infra.Repositories\Contas.Infra.Repositories.csproj" />
+    <ProjectReference Include="..\Contas.Commands.Abstractions\Contas.Commands.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
