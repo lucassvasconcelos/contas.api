@@ -45,14 +45,9 @@ jobs:
         files: ./tests/.coverage/cov.cobertura.xml
         fail_ci_if_error: true
 
-    - name: Docker Login
-      run: docker login -u lucassvasconcelos -p ${{ secrets.DOCKER_HUB_TOKEN }}
-
-    - name: Docker Build
-      run: docker build -t contas.api -f Dockerfile .
-
-    - name: Docker Tag
-      run: docker tag contas.api lucassvasconcelos/contas.api:latest
-
-    - name: Docker Push
-      run: docker push lucassvasconcelos/contas.api
+    - name: Build, Push and Release a Docker container to Heroku
+      uses: gonuit/heroku-docker-deploy@v1.3.3
+      with:
+        email: ${{ secrets.HEROKU_EMAIL }}
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}

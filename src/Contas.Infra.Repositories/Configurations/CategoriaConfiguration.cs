@@ -33,11 +33,6 @@ namespace Contas.Infra.Repositories.Configurations
             categorias
                 .Property(prop => prop.Usuario)
                 .IsRequired();
-
-            categorias.HasData(
-                Categoria.Criar("Receita", "Receita", Guid.Empty),
-                Categoria.Criar("Despesa", "Despesa", Guid.Empty)
-            );
         }
     }
 }
