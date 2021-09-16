@@ -20,6 +20,8 @@ COPY /src/Contas.Infra.Repositories/Contas.Infra.Repositories.csproj /app/src/Co
 COPY /src/Contas.Infra.Repositories.Abstractions/Contas.Infra.Repositories.Abstractions.csproj /app/src/Contas.Infra.Repositories.Abstractions/Contas.Infra.Repositories.Abstractions.csproj
 COPY /src/Contas.Queries/Contas.Queries.csproj /app/src/Contas.Queries/Contas.Queries.csproj
 COPY /src/Contas.Queries.Abstractions/Contas.Queries.Abstractions.csproj /app/src/Contas.Queries.Abstractions/Contas.Queries.Abstractions.csproj
+COPY /tests/Contas.UnitTests/Contas.UnitTests.csproj /app/tests/Contas.UnitTests/Contas.UnitTests.csproj
+COPY /tests/Contas.IntegrationTests/Contas.IntegrationTests.csproj /app/tests/Contas.IntegrationTests/Contas.IntegrationTests.csproj
 
 RUN dotnet restore --no-cache
 
