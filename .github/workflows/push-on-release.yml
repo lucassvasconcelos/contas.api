@@ -44,3 +44,15 @@ jobs:
       with:
         files: ./tests/.coverage/cov.cobertura.xml
         fail_ci_if_error: true
+
+    - name: Docker Login
+      run: docker login -u lucassvasconcelos -p ${{ secrets.DOCKER_HUB_TOKEN }}
+
+    - name: Docker Build
+      run: docker build -t contas.api -f Dockerfile .
+
+    - name: Docker Tag
+      run: docker tag contas.api lucassvasconcelos/contas.api:latest
+
+    - name: Docker Push
+      run: docker push lucassvasconcelos/contas.api
