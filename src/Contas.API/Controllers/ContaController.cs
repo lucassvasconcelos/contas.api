@@ -16,5 +16,9 @@ namespace Contas.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Salvar([FromBody] CriarContaCommand request)
             => Ok(await _mediator.Send(request));
+
+        [HttpPut]
+        public async Task<IActionResult> Atualizar([FromBody] AtualizarContaCommand request)
+            => Ok(await _mediator.Send(request));
     }
 }
