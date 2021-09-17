@@ -10,6 +10,7 @@ namespace Contas.Domain
         public static Categoria Criar(
             string nome,
             string descricao,
+            TipoCategoria tipo,
             Guid usuario
         )
         {
@@ -17,6 +18,7 @@ namespace Contas.Domain
             {
                 Nome = nome,
                 Descricao = descricao,
+                Tipo = tipo,
                 Usuario = usuario,
             };
 

@@ -1,4 +1,3 @@
-using System;
 using Contas.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -15,6 +14,14 @@ namespace Contas.Infra.Repositories.Configurations
                 .HasKey(key => key.Id);
 
             categorias
+                .Property(prop => prop.DataCriacao)
+                .IsRequired();
+
+            categorias
+                .Property(prop => prop.DataUltimaAtualizacao)
+                .IsRequired();
+
+            categorias
                 .Property(prop => prop.Nome)
                 .IsRequired();
 
@@ -23,11 +30,7 @@ namespace Contas.Infra.Repositories.Configurations
                 .IsRequired();
 
             categorias
-                .Property(prop => prop.DataCriacao)
-                .IsRequired();
-
-            categorias
-                .Property(prop => prop.DataUltimaAtualizacao)
+                .Property(prop => prop.Tipo)
                 .IsRequired();
 
             categorias

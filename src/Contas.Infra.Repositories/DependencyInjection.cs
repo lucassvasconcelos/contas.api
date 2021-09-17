@@ -1,5 +1,6 @@
 using Contas.Infra.Repositories.Abstractions.Repositories;
 using Contas.Infra.Repositories.Context;
+using CoreBox.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,7 @@ namespace Contas.Infra.Repositories
 
         private static void AddRepositories(this IServiceCollection services)
         {
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IContaRepository, ContaRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         }

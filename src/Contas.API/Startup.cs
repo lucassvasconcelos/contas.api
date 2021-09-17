@@ -1,5 +1,10 @@
+using System.Text.Json.Serialization;
+using Contas.Commands;
+using Contas.DomainServices;
+using Contas.Events;
 using Contas.Infra.Repositories;
 using Contas.Infra.Repositories.Context;
+using Contas.Queries;
 using CoreBox.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,7 +23,16 @@ namespace Contas.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options => 
+            {
+                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            });
+
+            services.AddResponseCompression();
+            services.AddCommands();
+            services.AddDomainServices();
+            services.AddEvents();
+            services.AddQueries();
             services.AddContext(_configuration);
         }
 

@@ -14,15 +14,37 @@ namespace Contas.Infra.Repositories.Configurations
                 .HasKey(key => key.Id);
 
             contas
-                .Property(prop => prop.Nome)
-                .IsRequired();
-
-            contas
                 .Property(prop => prop.DataCriacao)
                 .IsRequired();
 
             contas
                 .Property(prop => prop.DataUltimaAtualizacao)
+                .IsRequired();
+
+            contas
+                .Property(prop => prop.Nome)
+                .IsRequired();
+
+            contas
+                .Property(prop => prop.Data)
+                .IsRequired();
+
+            contas
+                .Property(prop => prop.Valor)
+                .IsRequired();
+
+            contas
+                .Property(prop => prop.Parcelado)
+                .IsRequired();
+
+            contas
+                .Property(prop => prop.NumeroParcelas);
+
+            contas
+                .Property(prop => prop.Observacao);
+
+            contas
+                .Property(prop => prop.Usuario)
                 .IsRequired();
 
             contas
