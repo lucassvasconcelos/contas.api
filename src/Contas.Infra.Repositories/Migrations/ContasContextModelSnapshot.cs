@@ -39,32 +39,15 @@ namespace Contas.Infra.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Tipo")
+                        .HasColumnType("integer");
+
                     b.Property<Guid>("Usuario")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.ToTable("categorias");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("2780819b-924d-4ac3-9d2e-50ff9a823c65"),
-                            DataCriacao = new DateTime(2021, 9, 5, 19, 34, 20, 652, DateTimeKind.Local).AddTicks(2621),
-                            DataUltimaAtualizacao = new DateTime(2021, 9, 5, 19, 34, 20, 655, DateTimeKind.Local).AddTicks(6354),
-                            Descricao = "Receita",
-                            Nome = "Receita",
-                            Usuario = new Guid("00000000-0000-0000-0000-000000000000")
-                        },
-                        new
-                        {
-                            Id = new Guid("796b29c3-55c4-420e-b9d0-31faca96e27e"),
-                            DataCriacao = new DateTime(2021, 9, 5, 19, 34, 20, 655, DateTimeKind.Local).AddTicks(8091),
-                            DataUltimaAtualizacao = new DateTime(2021, 9, 5, 19, 34, 20, 655, DateTimeKind.Local).AddTicks(8115),
-                            Descricao = "Despesa",
-                            Nome = "Despesa",
-                            Usuario = new Guid("00000000-0000-0000-0000-000000000000")
-                        });
                 });
 
             modelBuilder.Entity("Contas.Domain.Conta", b =>

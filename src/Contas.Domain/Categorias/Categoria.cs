@@ -8,6 +8,7 @@ namespace Contas.Domain
     {
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
+        public TipoCategoria Tipo { get; private set; }
         public Guid Usuario { get; private set; }
         public virtual IEnumerable<Conta> Contas { get; set; }
     }

@@ -14,6 +14,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Contas.Infra.Repositories\Contas.Infra.Repositories.csproj" />
     <ProjectReference Include="..\Contas.Commands.Abstractions\Contas.Commands.Abstractions.csproj" />
+    <ProjectReference Include="..\Contas.Commands\Contas.Commands.csproj" />
+    <ProjectReference Include="..\Contas.DomainServices\Contas.DomainServices.csproj" />
+    <ProjectReference Include="..\Contas.Events\Contas.Events.csproj" />
+    <ProjectReference Include="..\Contas.Queries\Contas.Queries.csproj" />
   </ItemGroup>
 
 </Project>

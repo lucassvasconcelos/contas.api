@@ -14,6 +14,7 @@ namespace Contas.Infra.Repositories.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Nome = table.Column<string>(type: "text", nullable: false),
                     Descricao = table.Column<string>(type: "text", nullable: false),
+                    Tipo = table.Column<int>(type: "integer", nullable: false),
                     Usuario = table.Column<Guid>(type: "uuid", nullable: false),
                     DataCriacao = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     DataUltimaAtualizacao = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
@@ -48,15 +49,6 @@ namespace Contas.Infra.Repositories.Migrations
                         principalTable: "categorias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "categorias",
-                columns: new[] { "Id", "DataCriacao", "DataUltimaAtualizacao", "Descricao", "Nome", "Usuario" },
-                values: new object[,]
-                {
-                    { new Guid("2780819b-924d-4ac3-9d2e-50ff9a823c65"), new DateTime(2021, 9, 5, 19, 34, 20, 652, DateTimeKind.Local).AddTicks(2621), new DateTime(2021, 9, 5, 19, 34, 20, 655, DateTimeKind.Local).AddTicks(6354), "Receita", "Receita", new Guid("00000000-0000-0000-0000-000000000000") },
-                    { new Guid("796b29c3-55c4-420e-b9d0-31faca96e27e"), new DateTime(2021, 9, 5, 19, 34, 20, 655, DateTimeKind.Local).AddTicks(8091), new DateTime(2021, 9, 5, 19, 34, 20, 655, DateTimeKind.Local).AddTicks(8115), "Despesa", "Despesa", new Guid("00000000-0000-0000-0000-000000000000") }
                 });
 
             migrationBuilder.CreateIndex(
