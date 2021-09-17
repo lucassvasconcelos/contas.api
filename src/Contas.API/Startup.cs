@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace Contas.API
 {
@@ -35,8 +34,6 @@ namespace Contas.API
             services.AddEvents();
             services.AddQueries();
             services.AddContext(_configuration);
-
-            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Contas API", Version = "v1" }));
         }
 
         public void Configure(
@@ -45,16 +42,13 @@ namespace Contas.API
             ContasContext contasContext
         )
         {
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Contas API"));
-
             contasContext.Migrate();
 
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
             app.UseCors();
-            app.UseGlobalExceptionHandler();
+            // app.UseGlobalExceptionHandler();
             app.UseRouting();
             app.UseResponseCompression();
             app.UseAuthentication();
