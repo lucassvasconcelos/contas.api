@@ -13,6 +13,7 @@ namespace Contas.UnitTests.Domain.Categorias
             conta.DataUltimaAtualizacao.Should().BeCloseTo(DateTime.Now, precision: TimeSpan.FromMilliseconds(2000));
             conta.Nome.Should().NotBeEmpty();
             conta.Descricao.Should().NotBeEmpty();
+            conta.Tipo.Should().BeOneOf(TipoCategoria.Receita, TipoCategoria.Despesa);
             conta.Usuario.Should().NotBeEmpty();
         }
     }
