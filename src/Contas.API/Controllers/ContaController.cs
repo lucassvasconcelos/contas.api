@@ -1,4 +1,5 @@
 using Contas.Commands.Abstractions;
+using Contas.Queries.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -23,6 +24,15 @@ namespace Contas.API.Controllers
 
         [HttpDelete]
         public async Task<IActionResult> Deletar(DeletarContaCommand request)
+            => Ok(await _mediator.Send(request));
+
+        [HttpGet]
+        public async Task<IActionResult> ObterTodas(ContasQuery request)
+            => Ok(await _mediator.Send(request));
+
+        [HttpGet]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> ObterPorId(ContaPorIdQuery request)
             => Ok(await _mediator.Send(request));
     }
 }

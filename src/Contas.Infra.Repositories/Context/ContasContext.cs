@@ -1,10 +1,11 @@
 using Contas.Domain;
 using Contas.Infra.Repositories.Configurations;
+using CoreBox.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contas.Infra.Repositories.Context
 {
-    public class ContasContext : DbContext
+    public class ContasContext : DbContext, IDbContext<ContasContext>
     {
         public DbSet<Conta> Contas { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
