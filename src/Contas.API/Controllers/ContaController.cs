@@ -20,5 +20,9 @@ namespace Contas.API.Controllers
         [HttpPut]
         public async Task<IActionResult> Atualizar([FromBody] AtualizarContaCommand request)
             => Ok(await _mediator.Send(request));
+
+        [HttpDelete]
+        public async Task<IActionResult> Deletar(DeletarContaCommand request)
+            => Ok(await _mediator.Send(request));
     }
 }
