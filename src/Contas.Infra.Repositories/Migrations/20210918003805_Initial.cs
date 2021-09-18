@@ -7,8 +7,12 @@ namespace Contas.Infra.Repositories.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "financeiro");
+
             migrationBuilder.CreateTable(
                 name: "categorias",
+                schema: "financeiro",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -26,6 +30,7 @@ namespace Contas.Infra.Repositories.Migrations
 
             migrationBuilder.CreateTable(
                 name: "contas",
+                schema: "financeiro",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -46,6 +51,7 @@ namespace Contas.Infra.Repositories.Migrations
                     table.ForeignKey(
                         name: "FK_CATEGORIA_CONTAS",
                         column: x => x.IdCategoria,
+                        principalSchema: "financeiro",
                         principalTable: "categorias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -53,6 +59,7 @@ namespace Contas.Infra.Repositories.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_contas_IdCategoria",
+                schema: "financeiro",
                 table: "contas",
                 column: "IdCategoria");
         }
@@ -60,10 +67,12 @@ namespace Contas.Infra.Repositories.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "contas");
+                name: "contas",
+                schema: "financeiro");
 
             migrationBuilder.DropTable(
-                name: "categorias");
+                name: "categorias",
+                schema: "financeiro");
         }
     }
 }

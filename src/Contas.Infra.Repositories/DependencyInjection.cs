@@ -23,7 +23,7 @@ namespace Contas.Infra.Repositories
             services.AddDbContext<ContasContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("ContasConnection"), 
-                    opt => opt.MigrationsHistoryTable("__ContasMigrationsHistory")
+                    opt => opt.MigrationsHistoryTable("__ContasMigrationsHistory", "financeiro")
                 );
                 options.EnableSensitiveDataLogging();
                 options.UseLazyLoadingProxies();

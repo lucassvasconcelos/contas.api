@@ -13,6 +13,7 @@ namespace Contas.Infra.Repositories.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.HasDefaultSchema("financeiro");
             builder.ApplyConfiguration(new ContaConfiguration());
             builder.ApplyConfiguration(new CategoriaConfiguration());
         }
