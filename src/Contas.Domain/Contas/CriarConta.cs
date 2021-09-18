@@ -27,8 +27,7 @@ namespace Contas.Domain
                 NumeroParcelas = numeroParcelas,
                 Observacao = observacao,
                 Usuario = usuario,
-                IdCategoria = categoria.Id,
-                Categoria = categoria
+                IdCategoria = categoria.Id
             };
 
             conta.ValidateAndThrow(new CriarContaValidator());

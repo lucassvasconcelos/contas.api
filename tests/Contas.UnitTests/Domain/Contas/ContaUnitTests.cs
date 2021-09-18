@@ -73,7 +73,7 @@ namespace Contas.UnitTests.Domain.Contas
             conta.Observacao.Should().Be(observacao);
             conta.Usuario.Should().Be(usuario);
             conta.IdCategoria.Should().Be(categoria.Id);
-            conta.Categoria.Should().Be(categoria);
+            conta.Categoria.Should().Be(null);
         }
 
         [Theory, AutoMoqDataAttribute]
@@ -98,7 +98,7 @@ namespace Contas.UnitTests.Domain.Contas
             conta.Observacao.Should().Be(observacao);
             conta.Usuario.Should().Be(usuario);
             conta.IdCategoria.Should().Be(categoria.Id);
-            conta.Categoria.Should().Be(categoria);
+            conta.Categoria.Should().Be(null);
         }
 
         [Theory, AutoMoqDataAttribute]

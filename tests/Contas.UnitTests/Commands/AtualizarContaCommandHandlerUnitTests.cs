@@ -46,7 +46,7 @@ namespace Contas.UnitTests.Commands
             conta.Observacao.Should().Be(command.Observacao);
             conta.Usuario.Should().Be(command.Usuario.Value);
             conta.IdCategoria.Should().Be(categoria.Id);
-            conta.Categoria.Should().Be(categoria);
+            conta.Categoria.Should().Be(null);
 
             _mockUnitOfWork.Verify(s => s.GetRepository<Conta>().GetByIdAsync(command.Id.Value), Times.Once);
             _mockUnitOfWork.Verify(s => s.GetRepository<Categoria>().GetByIdAsync(command.Categoria.Value), Times.Once);

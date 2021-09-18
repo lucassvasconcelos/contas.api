@@ -39,7 +39,7 @@ namespace Contas.Domain.Contas.Validators
                 .NotEmpty()
                 .WithMessage("É necessário definir o Usuário que cadastrou a Conta");
 
-            RuleFor(rule => rule.Categoria)
+            RuleFor(rule => rule.IdCategoria)
                 .NotEmpty()
                 .WithMessage("É necessário definir a Categoria da Conta");
         }

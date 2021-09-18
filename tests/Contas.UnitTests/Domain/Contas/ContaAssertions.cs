@@ -17,7 +17,7 @@ namespace Contas.UnitTests.Domain.Contas
             conta.Valor.Should().BeGreaterThan(0);
             conta.Usuario.Should().NotBeEmpty();
             conta.IdCategoria.Should().NotBeEmpty();
-            conta.Categoria.Should().NotBeNull();
+            conta.Categoria.Should().BeNull();
 
             if (conta.Parcelado)
                 conta.NumeroParcelas.Should().BeGreaterThan(0);
@@ -35,7 +35,7 @@ namespace Contas.UnitTests.Domain.Contas
             conta.Valor.Should().BeGreaterThan(0);
             conta.Usuario.Should().NotBeEmpty();
             conta.IdCategoria.Should().NotBeEmpty();
-            conta.Categoria.Should().NotBeNull();
+            conta.Categoria.Should().BeNull();
 
             if (conta.Parcelado)
                 conta.NumeroParcelas.Should().BeGreaterThan(0);
