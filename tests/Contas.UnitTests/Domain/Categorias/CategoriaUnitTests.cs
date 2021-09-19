@@ -16,7 +16,7 @@ namespace Contas.UnitTests.Domain.Categorias
         )
         {
             var categoria = Categoria.Criar(nome, descricao, tipo, usuario);
-            categoria.ShouldBeValid();
+            categoria.CategoriaCriadaShouldBeValid();
         }
     }
 }

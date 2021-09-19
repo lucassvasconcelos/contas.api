@@ -2,6 +2,7 @@ using Contas.Infra.Repositories.Abstractions.Repositories;
 using Contas.Infra.Repositories.Context;
 using CoreBox.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,12 +23,13 @@ namespace Contas.Infra.Repositories
         {
             services.AddDbContext<ContasContext>(options =>
             {
-                options.UseNpgsql(configuration.GetConnectionString("ContasConnection"), 
+                options.UseNpgsql(configuration.GetConnectionString("ContasConnection"),
                     opt => opt.MigrationsHistoryTable("migrations_history", "financeiro")
                 );
                 options.UseSnakeCaseNamingConvention();
                 options.EnableSensitiveDataLogging();
                 options.UseLazyLoadingProxies();
+                options.ConfigureWarnings(warn => warn.Ignore(CoreEventId.DetachedLazyLoadingWarning));
             });
         }
 
