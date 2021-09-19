@@ -1,13 +1,10 @@
-using System.Data;
 using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
-using Contas.Domain;
 using Contas.Queries;
 using Contas.Queries.Abstractions;
 using CoreBox;
 using CoreBox.Repositories;
-using Dapper;
 using Moq;
 using Xunit;
 
