@@ -6,34 +6,34 @@ using System.Threading.Tasks;
 
 namespace Contas.API.Controllers
 {
-    [Route("contas")]
-    public class ContaController : ControllerBase
+    [Route("categorias")]
+    public class CategoriaController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public ContaController(IMediator mediator)
+        public CategoriaController(IMediator mediator)
             => _mediator = mediator;
 
         [HttpPost]
-        public async Task<IActionResult> Salvar([FromBody] CriarContaCommand request)
+        public async Task<IActionResult> Salvar([FromBody] CriarCategoriaCommand request)
             => Ok(await _mediator.Send(request));
 
         [HttpPut]
-        public async Task<IActionResult> Atualizar([FromBody] AtualizarContaCommand request)
+        public async Task<IActionResult> Atualizar([FromBody] AtualizarCategoriaCommand request)
             => Ok(await _mediator.Send(request));
 
         [HttpDelete]
         [Route("{id:guid}")]
-        public async Task<IActionResult> Deletar(DeletarContaCommand request)
+        public async Task<IActionResult> Deletar(DeletarCategoriaCommand request)
             => Ok(await _mediator.Send(request));
 
         [HttpGet]
-        public async Task<IActionResult> ObterTodas(ContasQuery request)
+        public async Task<IActionResult> ObterTodas(CategoriasQuery request)
             => Ok(await _mediator.Send(request));
 
         [HttpGet]
         [Route("{id:guid}")]
-        public async Task<IActionResult> ObterPorId(ContaPorIdQuery request)
+        public async Task<IActionResult> ObterPorId(CategoriaPorIdQuery request)
             => Ok(await _mediator.Send(request));
     }
 }
