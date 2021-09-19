@@ -1,7 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0-focal as build
 
-EXPOSE 80
-
 WORKDIR /app
 
 ENV DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0

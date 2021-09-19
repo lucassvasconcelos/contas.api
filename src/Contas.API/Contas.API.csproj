@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Contas.DomainServices\Contas.DomainServices.csproj" />
     <ProjectReference Include="..\Contas.Events\Contas.Events.csproj" />
     <ProjectReference Include="..\Contas.Queries\Contas.Queries.csproj" />
+    <ProjectReference Include="..\Contas.Queries.Abstractions\Contas.Queries.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

@@ -48,7 +48,7 @@ namespace Contas.API
                 app.UseDeveloperExceptionPage();
 
             app.UseCors();
-            app.UseGlobalExceptionHandler();
+            // app.UseGlobalExceptionHandler();
             app.UseRouting();
             app.UseResponseCompression();
             app.UseAuthentication();

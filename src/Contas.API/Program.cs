@@ -10,6 +10,13 @@ namespace Contas.API
 
         public static IHostBuilder CreateHostBuilder(string[] args)
             => Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+                .ConfigureWebHostDefaults(webBuilder => 
+                {
+                    #if !DEBUG
+                        webBuilder.UseStartup<Startup>().UseUrls("http://*:" + System.Environment.GetEnvironmentVariable("PORT"));
+                    #else
+                        webBuilder.UseStartup<Startup>();
+                    #endif
+                });
     }
 }

@@ -1,9 +1,11 @@
 using System;
+using System.Data.Common;
 using System.Threading.Tasks;
 using Contas.Domain;
 using Contas.Infra.Repositories.Context;
 using CoreBox.Domain;
 using CoreBox.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Contas.Infra.Repositories
@@ -29,6 +31,9 @@ namespace Contas.Infra.Repositories
 
         public async Task RollBackTransactionAsync(IDbContextTransaction transaction)
             => await transaction.RollbackAsync();
+
+        public DbConnection GetDbConnection()
+            => _context.Database.GetDbConnection();
 
         public IRepository<TEntity> GetRepository<TEntity>() where TEntity : Entity<TEntity>
             => typeof(TEntity) switch

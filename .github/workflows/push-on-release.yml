@@ -45,6 +45,13 @@ jobs:
         files: ./tests/.coverage/cov.cobertura.xml
         fail_ci_if_error: true
 
+    - name: Write appsettings.Production.json
+      uses: DamianReeves/write-file-action@v1.0
+      with:
+        path: ./src/Contas.API/appsettings.Production.json
+        contents: ${{ secrets.APP_SETTINGS_PRD }}
+        write-mode: overwrite
+
     - name: Build, Push and Release a Docker container to Heroku
       uses: gonuit/heroku-docker-deploy@v1.3.3
       with:

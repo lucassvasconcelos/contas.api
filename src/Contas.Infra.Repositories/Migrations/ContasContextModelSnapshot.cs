@@ -15,6 +15,7 @@ namespace Contas.Infra.Repositories.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("financeiro")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -23,29 +24,37 @@ namespace Contas.Infra.Repositories.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("data_criacao");
 
                     b.Property<DateTime>("DataUltimaAtualizacao")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("data_ultima_atualizacao");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("descricao");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("nome");
 
                     b.Property<int>("Tipo")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("tipo");
 
                     b.Property<Guid>("Usuario")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("usuario");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_categorias");
 
                     b.ToTable("categorias");
                 });
@@ -54,42 +63,55 @@ namespace Contas.Infra.Repositories.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("Data")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("data");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("data_criacao");
 
                     b.Property<DateTime>("DataUltimaAtualizacao")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("data_ultima_atualizacao");
 
                     b.Property<Guid>("IdCategoria")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id_categoria");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("nome");
 
                     b.Property<int>("NumeroParcelas")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("numero_parcelas");
 
                     b.Property<string>("Observacao")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("observacao");
 
                     b.Property<bool>("Parcelado")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("parcelado");
 
                     b.Property<Guid>("Usuario")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("usuario");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("numeric");
+                        .HasColumnType("numeric")
+                        .HasColumnName("valor");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_contas");
 
-                    b.HasIndex("IdCategoria");
+                    b.HasIndex("IdCategoria")
+                        .HasDatabaseName("ix_contas_id_categoria");
 
                     b.ToTable("contas");
                 });
