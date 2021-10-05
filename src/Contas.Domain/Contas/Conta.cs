@@ -14,8 +14,6 @@ namespace Contas.Domain
         public string Observacao { get; private set; }
         public Guid Usuario { get; private set; }
         public Guid IdCategoria { get; private set; }
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-        public virtual Categoria Categoria { get; private set; }
+        public Categoria Categoria { get; private set; }
     }
 }

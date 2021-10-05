@@ -23,7 +23,7 @@ namespace Contas.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddJsonOptions(options => 
+            services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             });
@@ -34,6 +34,7 @@ namespace Contas.API
             services.AddEvents();
             services.AddQueries();
             services.AddContext(_configuration);
+            services.AddAutoMapper(typeof(Startup));
         }
 
         public void Configure(

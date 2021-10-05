@@ -1,4 +1,7 @@
+using AutoMapper;
+using Contas.API.ViewModels;
 using Contas.Commands.Abstractions;
+using Contas.Domain;
 using Contas.Queries.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +13,23 @@ namespace Contas.API.Controllers
     public class ContaController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public ContaController(IMediator mediator)
-            => _mediator = mediator;
+        public ContaController(
+            IMediator mediator,
+            IMapper mapper
+        )
+        {
+            _mediator = mediator;
+            _mapper = mapper;
+        }
 
         [HttpPost]
         public async Task<IActionResult> Salvar([FromBody] CriarContaCommand request)
-            => Ok(await _mediator.Send(request));
+        {
+            var conta = _mapper.Map<Conta, ContaViewModel>(await _mediator.Send(request));
+            return Created($"~/contas/{conta.Id}", conta);
+        }
 
         [HttpPut]
         public async Task<IActionResult> Atualizar([FromBody] AtualizarContaCommand request)
