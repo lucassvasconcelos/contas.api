@@ -28,7 +28,6 @@ namespace Contas.Infra.Repositories
                 );
                 options.UseSnakeCaseNamingConvention();
                 options.EnableSensitiveDataLogging();
-                options.UseLazyLoadingProxies();
                 options.ConfigureWarnings(warn => warn.Ignore(CoreEventId.DetachedLazyLoadingWarning));
             });
         }

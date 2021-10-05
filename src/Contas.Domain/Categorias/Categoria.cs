@@ -11,8 +11,6 @@ namespace Contas.Domain
         public string Descricao { get; private set; }
         public TipoCategoria Tipo { get; private set; }
         public Guid Usuario { get; private set; }
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-        public virtual IEnumerable<Conta> Contas { get; set; }
+        public IEnumerable<Conta> Contas { get; set; }
     }
 }
