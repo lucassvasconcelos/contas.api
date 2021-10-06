@@ -5,6 +5,7 @@ using Contas.Domain;
 using Contas.Queries.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Contas.API.Controllers
@@ -33,7 +34,7 @@ namespace Contas.API.Controllers
 
         [HttpPut]
         public async Task<IActionResult> Atualizar([FromBody] AtualizarContaCommand request)
-            => Ok(await _mediator.Send(request));
+            => Ok(_mapper.Map<Conta, ContaViewModel>(await _mediator.Send(request)));
 
         [HttpDelete]
         [Route("{id:guid}")]
@@ -42,11 +43,12 @@ namespace Contas.API.Controllers
 
         [HttpGet]
         public async Task<IActionResult> ObterTodas(ContasQuery request)
-            => Ok(await _mediator.Send(request));
+            => Ok((await _mediator.Send(request))
+                .Select(conta => _mapper.Map<Conta, ContaViewModel>(conta)));
 
         [HttpGet]
         [Route("{id:guid}")]
         public async Task<IActionResult> ObterPorId(ContaPorIdQuery request)
-            => Ok(await _mediator.Send(request));
+            => Ok(_mapper.Map<Conta, ContaViewModel>(await _mediator.Send(request)));
     }
 }
