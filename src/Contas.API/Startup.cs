@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace Contas.API
 {
@@ -23,10 +24,11 @@ namespace Contas.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            });
+            services.AddControllers().AddJsonOptions(opts
+                => opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
+
+            services.AddSwaggerGen(sw
+                => sw.SwaggerDoc("v1", new OpenApiInfo { Title = "Contas", Version = "v1" }));
 
             services.AddResponseCompression();
             services.AddCommands();
@@ -48,6 +50,8 @@ namespace Contas.API
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Contas v1"));
             app.UseCors();
             // app.UseGlobalExceptionHandler();
             app.UseRouting();
