@@ -11,7 +11,7 @@ namespace Contas.API.ViewModels
         public bool Parcelado { get; set; }
         public int NumeroParcelas { get; set; }
         public Guid Usuario { get; set; }
-        public CategoriaViewModel Categoria { get; set; }
+        public Guid IdCategoria { get; set; }
         public string Observacao { get; set; }
     }
 }

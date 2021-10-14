@@ -30,6 +30,18 @@ namespace Contas.API
             services.AddSwaggerGen(sw
                 => sw.SwaggerDoc("v1", new OpenApiInfo { Title = "Contas", Version = "v1" }));
 
+            services.AddCors(opts =>
+            {
+                opts.AddDefaultPolicy(policy =>
+                {
+                    policy.AllowAnyHeader();
+                    policy.AllowAnyMethod();
+                    policy.WithOrigins(_configuration["AllowedOrigins"]);
+                    policy.SetIsOriginAllowedToAllowWildcardSubdomains();
+                    policy.AllowCredentials();
+                });
+            });
+
             services.AddResponseCompression();
             services.AddCommands();
             services.AddDomainServices();
