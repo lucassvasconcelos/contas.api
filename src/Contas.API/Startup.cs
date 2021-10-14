@@ -65,7 +65,7 @@ namespace Contas.API
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Contas v1"));
             app.UseCors();
-            // app.UseGlobalExceptionHandler();
+            app.UseGlobalExceptionHandler();
             app.UseRouting();
             app.UseResponseCompression();
             app.UseAuthentication();

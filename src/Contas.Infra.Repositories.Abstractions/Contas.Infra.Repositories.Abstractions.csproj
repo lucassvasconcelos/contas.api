@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CoreBox" Version="3.7.2" />
+    <PackageReference Include="CoreBox" Version="3.10.3" />
   </ItemGroup>
 
   <ItemGroup>

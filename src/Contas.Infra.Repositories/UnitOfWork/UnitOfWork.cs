@@ -32,6 +32,9 @@ namespace Contas.Infra.Repositories
         public async Task RollBackTransactionAsync(IDbContextTransaction transaction)
             => await transaction.RollbackAsync();
 
+        public async Task<bool> CanConnectAsync()
+            => await _context.Database.CanConnectAsync();
+
         public DbConnection GetDbConnection()
             => _context.Database.GetDbConnection();
 
