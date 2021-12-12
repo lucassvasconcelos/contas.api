@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0-focal as build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-focal as build
 
 WORKDIR /app
 
@@ -27,7 +27,7 @@ COPY . .
 
 RUN dotnet build && dotnet publish -c Release -o /build --no-restore
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal
 
 WORKDIR /app
 
