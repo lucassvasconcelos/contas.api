@@ -36,7 +36,7 @@ namespace Contas.API
                 {
                     policy.AllowAnyHeader();
                     policy.AllowAnyMethod();
-                    policy.WithOrigins(_configuration["AllowedOrigins"]);
+                    policy.WithOrigins(_configuration["AllowedOrigins"].Split(';'));
                     policy.SetIsOriginAllowedToAllowWildcardSubdomains();
                     policy.AllowCredentials();
                 });
