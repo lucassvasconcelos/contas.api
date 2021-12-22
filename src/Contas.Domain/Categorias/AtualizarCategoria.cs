@@ -19,7 +19,7 @@ namespace Contas.Domain
             categoria.Descricao = descricao;
             categoria.Tipo = tipo;
             categoria.Usuario = usuario;
-            categoria.DataUltimaAtualizacao = DateTime.Now;
+            categoria.DataUltimaAtualizacao = DateTime.UtcNow;
 
             categoria.ValidateAndThrow(new AtualizarCategoriaValidator());
             return categoria;

@@ -19,7 +19,7 @@ namespace Contas.Domain
                 Nome = nome,
                 Descricao = descricao,
                 Tipo = tipo,
-                Usuario = usuario,
+                Usuario = usuario
             };
 
             categoria.ValidateAndThrow(new CriarCategoriaValidator());
