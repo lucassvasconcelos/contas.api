@@ -27,6 +27,7 @@ namespace Contas.Infra.Repositories.Configurations
 
             contas
                 .Property(prop => prop.Data)
+                .HasColumnType("date")
                 .IsRequired();
 
             contas
