@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CoreBox" Version="3.14.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Contas.Domain\Contas.Domain.csproj" />
   </ItemGroup>
 

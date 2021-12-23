@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace Contas.API
@@ -18,6 +19,8 @@ namespace Contas.API
     public class Startup
     {
         public IConfiguration _configuration { get; }
+        public static readonly ILoggerFactory _loggerFactory
+            = LoggerFactory.Create(builder => { builder.AddConsole(); });
 
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
             => _configuration = configuration.GetEnvironmentConfiguration(env);
@@ -47,7 +50,7 @@ namespace Contas.API
             services.AddDomainServices();
             services.AddEvents();
             services.AddQueries();
-            services.AddContext(_configuration);
+            services.AddContext(_configuration, _loggerFactory);
             services.AddAutoMapper(typeof(Startup));
         }
 

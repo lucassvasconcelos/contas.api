@@ -27,7 +27,7 @@ namespace Contas.Domain
             conta.Observacao = observacao;
             conta.Usuario = usuario;
             conta.IdCategoria = categoria.Id;
-            conta.DataUltimaAtualizacao = DateTime.Now;
+            conta.DataUltimaAtualizacao = DateTime.UtcNow;
 
             conta.ValidateAndThrow(new AtualizarContaValidator());
         }
