@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Contas.Domain.Categorias.Validators
+namespace Contas.Domain
 {
     public class AtualizarCategoriaValidator : AbstractValidator<Categoria>
     {
@@ -26,7 +26,7 @@ namespace Contas.Domain.Categorias.Validators
                 .NotEmpty()
                 .WithMessage("É necessário definir o Tipo da Categoria");
 
-            RuleFor(rule => rule.Usuario)
+            RuleFor(rule => rule.IdUsuario)
                 .NotEmpty()
                 .WithMessage("É necessário definir o Usuário que cadastrou a Categoria");
         }

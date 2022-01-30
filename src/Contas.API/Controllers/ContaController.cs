@@ -3,14 +3,18 @@ using Contas.API.ViewModels;
 using Contas.Commands.Abstractions;
 using Contas.Domain;
 using Contas.Queries.Abstractions;
+using CoreBox.Extensions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Contas.API.Controllers
 {
     [Route("contas")]
+    [Authorize]
     public class ContaController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -28,13 +32,17 @@ namespace Contas.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Salvar([FromBody] CriarContaCommand request)
         {
+            request.Usuario = Guid.Parse(HttpContext.GetUserIdAsString());
             var conta = _mapper.Map<Conta, ContaViewModel>(await _mediator.Send(request));
             return Created($"~/contas/{conta.Id}", conta);
         }
 
         [HttpPut]
         public async Task<IActionResult> Atualizar([FromBody] AtualizarContaCommand request)
-            => Ok(_mapper.Map<Conta, ContaViewModel>(await _mediator.Send(request)));
+        {
+            request.Usuario = Guid.Parse(HttpContext.GetUserIdAsString());
+            return Ok(_mapper.Map<Conta, ContaViewModel>(await _mediator.Send(request)));
+        }
 
         [HttpDelete]
         [Route("{id:guid}")]

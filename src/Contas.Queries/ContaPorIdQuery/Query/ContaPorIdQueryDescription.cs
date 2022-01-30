@@ -14,7 +14,7 @@ namespace Contas.Queries
                 parcelado AS {nameof(Conta.Parcelado)},
                 numero_parcelas AS {nameof(Conta.NumeroParcelas)},
                 observacao AS {nameof(Conta.Observacao)},
-                usuario AS {nameof(Conta.Usuario)},
+                id_usuario AS {nameof(Conta.IdUsuario)},
                 id_categoria AS {nameof(Conta.IdCategoria)},
                 data_criacao AS {nameof(Conta.DataCriacao)},
                 data_ultima_atualizacao AS {nameof(Conta.DataUltimaAtualizacao)}

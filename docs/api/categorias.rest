@@ -1,0 +1,58 @@
+@authUrl =  http://localhost:5000/auth
+@resourceUrl =  http://localhost:5000/categorias
+@idCategoria = {{cadastrarCategoria.response.body.$.id}}
+@accessToken = {{login.response.body.$.accessToken}}
+
+# @name login
+POST {{authUrl}}
+content-type: application/json
+
+{
+  "id": "vasconla",
+  "senha": "P@ssw0rd"
+}
+
+###
+
+# @name cadastrarCategoria
+POST {{resourceUrl}}
+content-type: application/json
+authorization: Bearer {{accessToken}}
+
+{
+    "nome": "Receita",
+    "descricao": "Contas a receber",
+    "tipo": 1
+}
+
+###
+
+# @name atualizarCategoria
+PUT {{resourceUrl}}
+content-type: application/json
+authorization: Bearer {{accessToken}}
+
+{
+    "id": "{{idCategoria}}",
+    "nome": "Receita",
+    "descricao": "Categoria Alterada",
+    "tipo": 1
+}
+
+###
+
+# @name deletarCategoria
+DELETE {{resourceUrl}}/{{idCategoria}}
+authorization: Bearer {{accessToken}}
+
+###
+
+# @name obterTodasAsCategorias
+GET {{resourceUrl}}
+authorization: Bearer {{accessToken}}
+
+###
+
+# @name obterCategoriaPorId
+GET {{resourceUrl}}/{{idCategoria}}
+authorization: Bearer {{accessToken}}

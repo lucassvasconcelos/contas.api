@@ -1,0 +1,22 @@
+@authUrl =  http://localhost:5000/auth
+@baseUrl =  http://localhost:5000/relatorios
+@accessToken = {{login.response.body.$.accessToken}}
+
+# @name login
+POST {{authUrl}}
+content-type: application/json
+
+{
+  "id": "vasconla",
+  "senha": "P@ssw0rd"
+}
+
+###
+
+GET {{baseUrl}}/totalizadores
+authorization: Bearer {{accessToken}}
+
+###
+
+GET {{baseUrl}}/valor-total-por-categoria
+authorization: Bearer {{accessToken}}

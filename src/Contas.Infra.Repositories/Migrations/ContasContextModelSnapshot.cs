@@ -17,8 +17,7 @@ namespace Contas.Infra.Repositories.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("financeiro")
-                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -43,6 +42,10 @@ namespace Contas.Infra.Repositories.Migrations
                         .HasColumnType("text")
                         .HasColumnName("descricao");
 
+                    b.Property<Guid>("IdUsuario")
+                        .HasColumnType("uuid")
+                        .HasColumnName("id_usuario");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("text")
@@ -52,12 +55,11 @@ namespace Contas.Infra.Repositories.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("tipo");
 
-                    b.Property<Guid>("Usuario")
-                        .HasColumnType("uuid")
-                        .HasColumnName("usuario");
-
                     b.HasKey("Id")
                         .HasName("pk_categorias");
+
+                    b.HasIndex("IdUsuario")
+                        .HasDatabaseName("ix_categorias_id_usuario");
 
                     b.ToTable("categorias", "financeiro");
                 });
@@ -85,6 +87,10 @@ namespace Contas.Infra.Repositories.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id_categoria");
 
+                    b.Property<Guid>("IdUsuario")
+                        .HasColumnType("uuid")
+                        .HasColumnName("id_usuario");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("text")
@@ -102,10 +108,6 @@ namespace Contas.Infra.Repositories.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("parcelado");
 
-                    b.Property<Guid>("Usuario")
-                        .HasColumnType("uuid")
-                        .HasColumnName("usuario");
-
                     b.Property<decimal>("Valor")
                         .HasColumnType("numeric")
                         .HasColumnName("valor");
@@ -116,7 +118,61 @@ namespace Contas.Infra.Repositories.Migrations
                     b.HasIndex("IdCategoria")
                         .HasDatabaseName("ix_contas_id_categoria");
 
+                    b.HasIndex("IdUsuario")
+                        .HasDatabaseName("ix_contas_id_usuario");
+
                     b.ToTable("contas", "financeiro");
+                });
+
+            modelBuilder.Entity("Contas.Domain.Usuario", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("data_criacao");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("date")
+                        .HasColumnName("data_nascimento");
+
+                    b.Property<DateTime>("DataUltimaAtualizacao")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("data_ultima_atualizacao");
+
+                    b.Property<string>("IdIdentityUser")
+                        .HasColumnType("text")
+                        .HasColumnName("id_identity_user");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("nome");
+
+                    b.Property<string>("Sobrenome")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("sobrenome");
+
+                    b.HasKey("Id")
+                        .HasName("pk_usuarios");
+
+                    b.ToTable("usuarios", "identity");
+                });
+
+            modelBuilder.Entity("Contas.Domain.Categoria", b =>
+                {
+                    b.HasOne("Contas.Domain.Usuario", "Usuario")
+                        .WithMany("Categorias")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_USUARIO_CATEGORIAS");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Contas.Domain.Conta", b =>
@@ -128,11 +184,27 @@ namespace Contas.Infra.Repositories.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_CATEGORIA_CONTAS");
 
+                    b.HasOne("Contas.Domain.Usuario", "Usuario")
+                        .WithMany("Contas")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_USUARIO_CONTAS");
+
                     b.Navigation("Categoria");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Contas.Domain.Categoria", b =>
                 {
+                    b.Navigation("Contas");
+                });
+
+            modelBuilder.Entity("Contas.Domain.Usuario", b =>
+                {
+                    b.Navigation("Categorias");
+
                     b.Navigation("Contas");
                 });
 #pragma warning restore 612, 618

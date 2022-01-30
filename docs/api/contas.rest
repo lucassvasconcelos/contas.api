@@ -1,0 +1,87 @@
+@authUrl =  http://localhost:5000/auth
+@categoriasUrl =  http://localhost:5000/categorias
+@resourceUrl =  http://localhost:5000/contas
+@idConta = {{cadastrarConta.response.body.$.id}}
+@idCategoria = {{cadastrarCategoria.response.body.$.id}}
+@accessToken = {{login.response.body.$.accessToken}}
+
+# @name login
+POST {{authUrl}}
+content-type: application/json
+
+{
+  "id": "vasconla",
+  "senha": "P@ssw0rd"
+}
+
+###
+
+# @name cadastrarCategoria
+POST {{categoriasUrl}}
+content-type: application/json
+authorization: Bearer {{accessToken}}
+
+{
+    "nome": "Receita",
+    "descricao": "Contas a receber",
+    "tipo": 1
+}
+
+###
+
+# @name cadastrarConta
+POST {{resourceUrl}}
+Content-Type: application/json
+authorization: Bearer {{accessToken}}
+
+{
+    "nome": "Lorem ipsum",
+    "data": "2022-03-05",
+    "valor": 10000,
+    "parcelado": true,
+    "numeroParcelas": 10,
+    "observacao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "categoria": "{{idCategoria}}"
+}
+
+###
+
+# @name atualizarConta
+PUT {{resourceUrl}}
+Content-Type: application/json
+authorization: Bearer {{accessToken}}
+
+{
+    "id": "{{idConta}}",
+    "nome": "Lorem ipsum",
+    "data": "2022-03-05",
+    "valor": 50000,
+    "parcelado": true,
+    "numeroParcelas": 60,
+    "observacao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "categoria": "{{idCategoria}}"
+}
+
+###
+
+# @name deletarConta
+DELETE {{resourceUrl}}/{{idConta}}
+authorization: Bearer {{accessToken}}
+
+###
+
+# @name obterTodasAsContas
+GET {{resourceUrl}}
+authorization: Bearer {{accessToken}}
+
+###
+
+# @name obterContaPorId
+GET {{resourceUrl}}/{{idConta}}
+authorization: Bearer {{accessToken}}
+
+###
+
+# @name deletarCategoria
+DELETE {{categoriasUrl}}/{{idCategoria}}
+authorization: Bearer {{accessToken}}

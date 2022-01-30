@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Contas.Commands.Abstractions\Contas.Commands.Abstractions.csproj" />
+    <ProjectReference Include="..\Contas.Infra.Identity\Contas.Infra.Identity.csproj" />
   </ItemGroup>
 
 </Project>

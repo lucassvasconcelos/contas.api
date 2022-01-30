@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -14,11 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Contas.Infra.Repositories\Contas.Infra.Repositories.csproj" />
     <ProjectReference Include="..\Contas.Commands.Abstractions\Contas.Commands.Abstractions.csproj" />
     <ProjectReference Include="..\Contas.Commands\Contas.Commands.csproj" />
     <ProjectReference Include="..\Contas.DomainServices\Contas.DomainServices.csproj" />
     <ProjectReference Include="..\Contas.Events\Contas.Events.csproj" />
+    <ProjectReference Include="..\Contas.Infra.Repositories\Contas.Infra.Repositories.csproj" />
+    <ProjectReference Include="..\Contas.Infra.Identity\Contas.Infra.Identity.csproj" />
     <ProjectReference Include="..\Contas.Queries\Contas.Queries.csproj" />
     <ProjectReference Include="..\Contas.Queries.Abstractions\Contas.Queries.Abstractions.csproj" />
   </ItemGroup>

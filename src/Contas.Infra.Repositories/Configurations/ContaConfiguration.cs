@@ -8,7 +8,7 @@ namespace Contas.Infra.Repositories.Configurations
     {
         public void Configure(EntityTypeBuilder<Conta> contas)
         {
-            contas.ToTable("contas");
+            contas.ToTable("contas", "financeiro");
 
             contas
                 .HasKey(key => key.Id);
@@ -45,14 +45,16 @@ namespace Contas.Infra.Repositories.Configurations
                 .Property(prop => prop.Observacao);
 
             contas
-                .Property(prop => prop.Usuario)
-                .IsRequired();
-
-            contas
                 .HasOne(ho => ho.Categoria)
                 .WithMany(wm => wm.Contas)
                 .HasForeignKey(fk => fk.IdCategoria)
                 .HasConstraintName("FK_CATEGORIA_CONTAS");
+
+            contas
+                .HasOne(ho => ho.Usuario)
+                .WithMany(wm => wm.Contas)
+                .HasForeignKey(fk => fk.IdUsuario)
+                .HasConstraintName("FK_USUARIO_CONTAS");
         }
     }
 }

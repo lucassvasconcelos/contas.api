@@ -1,5 +1,4 @@
 using System;
-using Contas.Domain.Contas.Validators;
 using CoreBox.Domain;
 using CoreBox.Extensions;
 
@@ -15,7 +14,7 @@ namespace Contas.Domain
             bool parcelado,
             int numeroParcelas,
             string observacao,
-            Guid usuario,
+            Guid idUsuario,
             Categoria categoria
         )
         {
@@ -25,7 +24,7 @@ namespace Contas.Domain
             conta.Parcelado = parcelado;
             conta.NumeroParcelas = numeroParcelas;
             conta.Observacao = observacao;
-            conta.Usuario = usuario;
+            conta.IdUsuario = idUsuario;
             conta.IdCategoria = categoria.Id;
             conta.DataUltimaAtualizacao = DateTime.UtcNow;
 

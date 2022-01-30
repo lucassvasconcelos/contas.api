@@ -1,5 +1,4 @@
 using System;
-using Contas.Domain.Categorias.Validators;
 using CoreBox.Domain;
 using CoreBox.Extensions;
 
@@ -12,13 +11,13 @@ namespace Contas.Domain
             string nome,
             string descricao,
             TipoCategoria tipo,
-            Guid usuario
+            Guid idUsuario
         )
         {
             categoria.Nome = nome;
             categoria.Descricao = descricao;
             categoria.Tipo = tipo;
-            categoria.Usuario = usuario;
+            categoria.IdUsuario = idUsuario;
             categoria.DataUltimaAtualizacao = DateTime.UtcNow;
 
             categoria.ValidateAndThrow(new AtualizarCategoriaValidator());

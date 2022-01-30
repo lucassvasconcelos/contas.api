@@ -1,11 +1,13 @@
 using Contas.Queries.Abstractions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Contas.API.Controllers
 {
     [Route("relatorios")]
+    [Authorize]
     public class RelatorioController : ControllerBase
     {
         private readonly IMediator _mediator;

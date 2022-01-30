@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Contas.Domain.Contas.Validators
+namespace Contas.Domain
 {
     public class AtualizarContaValidator : AbstractValidator<Conta>
     {
@@ -35,7 +35,7 @@ namespace Contas.Domain.Contas.Validators
                 .When(conta => conta.Parcelado)
                 .WithMessage("É necessário definir o Número de Parcelas para Contas parceladas");
 
-            RuleFor(rule => rule.Usuario)
+            RuleFor(rule => rule.IdUsuario)
                 .NotEmpty()
                 .WithMessage("É necessário definir o Usuário que cadastrou a Conta");
 

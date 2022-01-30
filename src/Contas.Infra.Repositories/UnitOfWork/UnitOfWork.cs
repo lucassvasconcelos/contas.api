@@ -43,6 +43,7 @@ namespace Contas.Infra.Repositories
             {
                 Type tipo when tipo == typeof(Conta) => (IRepository<TEntity>)ContaRepository,
                 Type tipo when tipo == typeof(Categoria) => (IRepository<TEntity>)CategoriaRepository,
+                Type tipo when tipo == typeof(Usuario) => (IRepository<TEntity>)UsuarioRepository,
                 _ => null
             };
     }

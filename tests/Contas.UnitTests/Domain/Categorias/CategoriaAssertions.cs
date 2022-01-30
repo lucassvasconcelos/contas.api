@@ -14,7 +14,7 @@ namespace Contas.UnitTests.Domain.Categorias
             categoria.Nome.Should().NotBeEmpty();
             categoria.Descricao.Should().NotBeEmpty();
             categoria.Tipo.Should().BeOneOf(TipoCategoria.Receita, TipoCategoria.Despesa);
-            categoria.Usuario.Should().NotBeEmpty();
+            categoria.IdUsuario.Should().NotBeEmpty();
         }
 
         public static void CategoriaAtualizadaDeveSerValida(this Categoria categoria)
@@ -24,7 +24,7 @@ namespace Contas.UnitTests.Domain.Categorias
             categoria.Nome.Should().NotBeEmpty();
             categoria.Descricao.Should().NotBeEmpty();
             categoria.Tipo.Should().BeOneOf(TipoCategoria.Receita, TipoCategoria.Despesa);
-            categoria.Usuario.Should().NotBeEmpty();
+            categoria.IdUsuario.Should().NotBeEmpty();
         }
     }
 }

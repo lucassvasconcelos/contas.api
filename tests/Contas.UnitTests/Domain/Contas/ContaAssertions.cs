@@ -15,7 +15,6 @@ namespace Contas.UnitTests.Domain.Contas
             conta.Data.Should().NotBe(DateTime.MinValue);
             conta.Data.Should().NotBe(DateTime.MaxValue);
             conta.Valor.Should().BeGreaterThan(0);
-            conta.Usuario.Should().NotBeEmpty();
             conta.IdCategoria.Should().NotBeEmpty();
             conta.Categoria.Should().BeNull();
 
@@ -33,7 +32,6 @@ namespace Contas.UnitTests.Domain.Contas
             conta.Data.Should().NotBe(DateTime.MinValue);
             conta.Data.Should().NotBe(DateTime.MaxValue);
             conta.Valor.Should().BeGreaterThan(0);
-            conta.Usuario.Should().NotBeEmpty();
             conta.IdCategoria.Should().NotBeEmpty();
             conta.Categoria.Should().BeNull();
 

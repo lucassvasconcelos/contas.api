@@ -9,14 +9,15 @@ namespace Contas.Infra.Repositories.Context
     {
         public DbSet<Conta> Contas { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         public ContasContext(DbContextOptions<ContasContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.HasDefaultSchema("financeiro");
             builder.ApplyConfiguration(new ContaConfiguration());
             builder.ApplyConfiguration(new CategoriaConfiguration());
+            builder.ApplyConfiguration(new UsuarioConfiguration());
         }
     }
 }

@@ -1,7 +1,7 @@
-using System.Text.Json.Serialization;
 using Contas.Commands;
 using Contas.DomainServices;
 using Contas.Events;
+using Contas.Infra.Identity;
 using Contas.Infra.Repositories;
 using Contas.Infra.Repositories.Context;
 using Contas.Queries;
@@ -27,40 +27,29 @@ namespace Contas.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddJsonOptions(opts
-                => opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
-
-            services.AddSwaggerGen(sw
-                => sw.SwaggerDoc("v1", new OpenApiInfo { Title = "Contas", Version = "v1" }));
-
-            services.AddCors(opts =>
-            {
-                opts.AddDefaultPolicy(policy =>
-                {
-                    policy.AllowAnyHeader();
-                    policy.AllowAnyMethod();
-                    policy.WithOrigins(_configuration["AllowedOrigins"].Split(';'));
-                    policy.SetIsOriginAllowedToAllowWildcardSubdomains();
-                    policy.AllowCredentials();
-                });
-            });
-
+            services.AddMyDefaultControllers();
             services.AddResponseCompression();
+            services.AddSwaggerGen(sw => sw.SwaggerDoc("v1", new OpenApiInfo { Title = "Contas", Version = "v1" }));
+            services.AddMyDefaultCors(_configuration);
             services.AddCommands();
             services.AddDomainServices();
             services.AddEvents();
             services.AddQueries();
             services.AddContext(_configuration, _loggerFactory);
+            services.AddMyDefaultAuthentication(_configuration);
+            services.AddIdentityContext(_configuration, _loggerFactory);
             services.AddAutoMapper(typeof(Startup));
         }
 
         public void Configure(
             IApplicationBuilder app,
             IWebHostEnvironment env,
-            ContasContext contasContext
+            ContasContext contasContext,
+            IdentityContext identityContext
         )
         {
             contasContext.Migrate();
+            identityContext.Migrate();
 
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();

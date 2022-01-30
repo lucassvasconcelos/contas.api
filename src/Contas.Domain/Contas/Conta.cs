@@ -1,5 +1,4 @@
 using System;
-using System.Text.Json.Serialization;
 using CoreBox.Domain;
 
 namespace Contas.Domain
@@ -12,7 +11,8 @@ namespace Contas.Domain
         public bool Parcelado { get; private set; }
         public int NumeroParcelas { get; private set; }
         public string Observacao { get; private set; }
-        public Guid Usuario { get; private set; }
+        public Guid IdUsuario { get; private set; }
+        public Usuario Usuario { get; private set; }
         public Guid IdCategoria { get; private set; }
         public Categoria Categoria { get; private set; }
     }
